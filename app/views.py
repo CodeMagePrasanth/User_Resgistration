@@ -5,8 +5,12 @@ from django.http import HttpResponse
 
 from app.forms import *
 
-# from django.core.mail import send_mail
+from django.core.mail import send_mail
 
+from django.contrib.auth import authenticate,login,logout
+from django.urls import reverse
+
+from django.contrib.auth.decorators import login_required
  
 def registration(request):
     USFO=UserForm()
@@ -26,13 +30,24 @@ def registration(request):
             MPFDO.username=MUFDO
             MPFDO.save()
 
-            # send_mail('registration',
-            #           'helloo---->>>today is your opportunity to build the tomarrow you want::>>JAMSHED ALI',
-            #           'ajamshed456@gmail.com',
-            #           [MUFDO.email],
-            #           fail_silently=False
-            #           )
+            send_mail('Welcome to IT world',
+                      'Join our Team, Imporve your connection',
+                      'prasanthsenthilkumaran@gmail.com',
+                      [MUFDO.email],
+                      fail_silently=False
+                      )
             
             return HttpResponse('Registration is successfull')
 
     return render(request,'registration.html',d)
+
+def dummy(request):
+    return render(request,'dummy.html')
+
+def home(request):
+    if request.session.get('username'):
+        username=request.session.get('username')
+        d={'username':username}
+        return render(request,'home.html',d)
+
+    return render(request,'home.html')

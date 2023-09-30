@@ -132,3 +132,12 @@ MEDIA_URL = 'media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT=MEDIA_DIR
+
+
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER='prasanthsenthilkumaran@gmail.com'
+EMAIL_HOST_PASSWORD='ovrk vrly yzea fmbm'
+EMAIL_USE_TLS=True
+EMAIL_USE_SSL=False
+EMAIL_PORT=587
+# ovrk vrly yzea fmbm
